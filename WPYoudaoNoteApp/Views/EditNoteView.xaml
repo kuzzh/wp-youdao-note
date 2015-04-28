@@ -1,0 +1,50 @@
+﻿<phone:PhoneApplicationPage xmlns:WPYoudaoNoteApp="clr-namespace:WPYoudaoNoteApp"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:YoudaoNoteEditor="clr-namespace:YoudaoNoteEditor;assembly=YoudaoNoteEditor" 
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:RichTextBox="clr-namespace:C1.Phone.RichTextBox;assembly=C1.Phone.RichTextBox.8"
+    x:Class="WPYoudaoNoteApp.Views.EditNoteView"
+    Style="{StaticResource NormalPhonePageStyle}"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" 
+    BackKeyPress="onBackKeyPress" Loaded="PhoneApplicationPage_Loaded">
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsMenuEnabled="True" BackgroundColor="#FF93C4D2" Mode="Minimized" Opacity="0.99">
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/insert_picture.png" Text="插入图片" Click="appbarBtnInsertPic_Click" IsEnabled="True" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/save.png" Text="保存" Click="appbarBtnSave_Click" IsEnabled="True" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/cancel.png" Text="取消" Click="appbarBtnCancel_Click" IsEnabled="True" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#FF93C4D2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="tbNotebook" Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+        <Border x:Name="titleBorder" Grid.Row="1"  BorderThickness="0,0,0,1" Margin="0" BorderBrush="#FF93C4D2">
+            <Grid Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="tbTitle" Padding="0" FontSize="24" HorizontalScrollBarVisibility="Auto"/>
+            </Grid>
+        </Border>
+        <YoudaoNoteEditor:RichTextEditor x:Name="rtbContent" Grid.Row="2"  Readonly="False"/>
+    </Grid>
+</phone:PhoneApplicationPage>

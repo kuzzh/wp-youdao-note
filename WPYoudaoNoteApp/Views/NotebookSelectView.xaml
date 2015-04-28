@@ -1,0 +1,31 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:UC="clr-namespace:WPYoudaoNoteApp.UC"
+    x:Class="WPYoudaoNoteApp.Views.NotebookSelectView"
+    Style="{StaticResource NormalPhonePageStyle}"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" BackKeyPress="PhoneApplicationPage_BackKeyPress">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/Assets/background.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderThickness="10,0,0,1" Margin="0" BorderBrush="#FF93C4D2">
+            <TextBlock Text="选择笔记本" Foreground="Black" VerticalAlignment="Center" FontSize="36" />
+        </Border>
+
+        <UC:NotebookList Name="NotebookList" Margin="0" Grid.Row="1" Loaded="NotebookList_Loaded"/>
+
+    </Grid>
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,68 @@
+﻿<UserControl 
+    x:Class="WPYoudaoNoteApp.UC.NotebookList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:data="clr-namespace:WPYoudaoNoteApp.Converters"
+    mc:Ignorable="d"
+    FontFamily="Microsoft YaHei"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}" >
+
+    <UserControl.Resources>
+        <data:SelectedItemForeColorConverter x:Key="SelectedItemForeColorConverter"/>
+    </UserControl.Resources>
+    
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Controls:LongListSelector x:Name="lbNotebook" 
+                                   ItemsSource="{Binding}" 
+                                   Style="{StaticResource LongListSelectorStyle}" 
+                                   Tap="lbNotebook_Tap" SelectionChanged="lbNotebook_SelectionChanged">
+            <Controls:LongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image Grid.RowSpan="2" VerticalAlignment="Top" Source="/Assets/Icons/folder.png"/>
+                            <TextBlock 
+                                Grid.Column="1"
+                                Text="{Binding Name}" 
+                                Tag="{Binding Name}" 
+                                FontSize="24" 
+                                Foreground="{Binding ForeColor, Converter={StaticResource SelectedItemForeColorConverter}}"
+                                VerticalAlignment="Center"
+                                Margin="8,0,0,0"
+                                />
+                            <TextBlock Grid.Column="2" 
+                                       Text="{Binding FormatNotesNum}" 
+                                       Margin="0,0,20,0" 
+                                       Tag="{Binding NotesNum}" 
+                                       FontSize="24" 
+                                       Foreground="Gray" 
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       />
+
+                        <TextBlock Grid.Column="1" 
+                                   Grid.Row="1"
+                                   Text="{Binding FormatModifyTime}" 
+                                   FontSize="15" 
+                                   Foreground="Gray" 
+                                   HorizontalAlignment="Left"
+                                   Margin="8,0,0,0"
+                                   />
+                    </Grid>
+                </DataTemplate>
+            </Controls:LongListSelector.ItemTemplate>
+        </Controls:LongListSelector>
+    </Grid>
+</UserControl>

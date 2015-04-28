@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="WPYoudaoNoteApp.UC.ReportErrorMessagePrompt"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <Border BorderBrush="YellowGreen" BorderThickness="2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="上次运行程序时发生了一个异常，你愿意发送一份错误报告吗？" TextWrapping="Wrap"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="您的邮箱地址：" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Name="tbEmail" VerticalAlignment="Center" Text="选填" FontStyle="Italic" GotFocus="tbEmail_GotFocus" LostFocus="tbEmail_LostFocus" />
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="您的 QQ：" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Name="tbQq" VerticalAlignment="Center" Text="选填" FontStyle="Italic" GotFocus="tbQq_GotFocus" LostFocus="tbQq_LostFocus" />
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,40 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:WPYoudaoNoteApp="clr-namespace:WPYoudaoNoteApp.UC"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    x:Class="WPYoudaoNoteApp.Views.MainView"
+    mc:Ignorable="d"
+    Style="{StaticResource NormalPhonePageStyle}"
+    shell:SystemTray.IsVisible="True" 
+    Loaded="OnLoaded" 
+    BackKeyPress="OnBackKeyPress"
+    >
+
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot">
+        <phone:Pivot Name="MainPivot" Style="{StaticResource PivotStyle}">
+            <phone:PivotItem 
+                Name="NoteListPivotItem"
+                >
+                <phone:PivotItem.Header>
+                    <TextBlock Text="我的笔记" Foreground="Black" FontFamily="Microsoft YaHei" FontSize="40" Margin="0,15,0,0" />
+                </phone:PivotItem.Header>
+                <WPYoudaoNoteApp:NoteList Name="NoteList"/>
+            </phone:PivotItem>
+
+            <phone:PivotItem 
+                Name="NotebookPivotItem" 
+                >
+                <phone:PivotItem.Header>
+                    <TextBlock Text="我的笔记本" Foreground="Black" FontFamily="Microsoft YaHei" FontSize="40" Margin="0,15,0,0" />
+                </phone:PivotItem.Header>
+                <WPYoudaoNoteApp:NotebookList Name="NotebookList" Margin="0"/>
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
+</phone:PhoneApplicationPage>

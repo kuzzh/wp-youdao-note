@@ -1,0 +1,52 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WPYoudaoNoteApp.Views.ViewNoteView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Style="{StaticResource NormalPhonePageStyle}"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#FF93C4D2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnGoHome" Grid.Column="0" Content="返回" BorderThickness="0" Click="btnGoHome_Click" FontWeight="Bold" FontSize="24" Padding="0"/>
+            <Button x:Name="btnSync" Grid.Column="2" Content="同步" BorderThickness="0" Click="btnSync_Click" FontWeight="Bold" FontSize="24" Padding="0"/>
+            <TextBlock x:Name="tbNotebook" Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+        <Border x:Name="titleBorder" Grid.Row="1"  BorderThickness="0,0,0,1" Margin="0" BorderBrush="#FF93C4D2">
+            <Grid Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="tbTitle" Padding="0" FontSize="24" HorizontalScrollBarVisibility="Auto" IsReadOnly="True"/>
+            </Grid>
+        </Border>
+        <phone:WebBrowser
+            Name="ContentWebBrowser"
+            Grid.Row="2" Navigating="ContentWebBrowser_Navigating"/>
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsMenuEnabled="True" BackgroundColor="#FF93C4D2" Mode="Minimized" Opacity="0.99">
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/edit.png" Text="编辑" Click="appbarBtnEdit_Click" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/delete.png" Text="删除" Click="appbarBtnDelete_Click" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/noteinfo.png" Text="笔记信息" Click="appBarBtnViewNoteInfo_Click" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/fullscreen.png" Text="全屏阅读" Click="appBarBtnFullScreenRead_Click" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
