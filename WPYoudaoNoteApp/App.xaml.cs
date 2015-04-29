@@ -68,7 +68,6 @@ namespace WPYoudaoNoteApp
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
             SyncCore.GetInst().InitializeSyncCore(ConstantPool.AccessToken, ConstantPool.ScreenWidth);
-            Util.CrackComponentOne();
             IsoStoreUtil.SaveFilesToIsoStore("style");
             //Task.Factory.StartNew(ImageDao.DeleteNoRootImages);
         }
@@ -78,7 +77,6 @@ namespace WPYoudaoNoteApp
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             SyncCore.GetInst().InitializeSyncCore(ConstantPool.AccessToken, ConstantPool.ScreenWidth);
-            Util.CrackComponentOne();
         }
 
         // 停用应用程序(发送到后台)时执行的代码

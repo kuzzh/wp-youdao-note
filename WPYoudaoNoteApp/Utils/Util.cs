@@ -17,12 +17,6 @@ namespace WPYoudaoNoteApp.Utils
 
     internal static class Util
     {
-        internal static void CrackComponentOne()
-        {
-            const BindingFlags flag = BindingFlags.Static | BindingFlags.NonPublic;
-            var alreadyNagged = typeof(C1NagScreen).GetField("AlreadyNagged", flag);
-            if (alreadyNagged != null) alreadyNagged.SetValue(null, true);
-        }
         internal static ApplicationBarIconButton AddApplicationBarButton(IApplicationBar bar, string imageUrl, string buttonName, EventHandler action = null)
         {
             var applicationBarIconButton = new ApplicationBarIconButton(new Uri(imageUrl, UriKind.Relative))
