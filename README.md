@@ -1,5 +1,5 @@
-# WPYoudaonNote
-有道云笔记WP版的一个实现。
+# wp-youdao-note
+基于有道云笔记开放接口的WP版的一个实现。
 
 ## 开发环境
 
